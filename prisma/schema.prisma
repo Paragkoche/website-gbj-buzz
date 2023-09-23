@@ -1,0 +1,129 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id       String @id @default(uuid())
+  email    String
+  password String
+}
+
+model blog {
+  id    String       @id @default(uuid())
+  image String
+  html  String
+  tags  blogs_tags[]
+}
+
+model blogs_cate {
+  id           String      @id @default(uuid())
+  name         String
+  blogs_tags   blogs_tags? @relation(fields: [blogs_tagsId], references: [id])
+  blogs_tagsId String?
+}
+
+model blogs_tags {
+  id   String @id @default(uuid())
+  name String
+
+  catetory blogs_cate[]
+
+  likes  Like[]
+  blog   blog?   @relation(fields: [blogId], references: [id])
+  blogId String?
+}
+
+model Like {
+  id           String      @id @default(uuid())
+  ip_address   String
+  blogs_tags   blogs_tags? @relation(fields: [blogs_tagsId], references: [id])
+  blogs_tagsId String?
+}
+
+model Comments {
+  id                   String     @id @default(uuid())
+  comments             String
+  comments_of_comments Comments   @relation("comment_", fields: [commentsId], references: [id])
+  comments_ref         Comments[] @relation("comment_")
+  commentsId           String
+}
+
+model members {
+  id           String        @id @default(uuid())
+  name         String
+  profile_pic  String
+  role         String
+  text         String
+  socialMedias SocialMedia[]
+}
+
+model SocialMedia {
+  id   String @id @default(uuid())
+  name String
+  link String
+
+  members   members? @relation(fields: [membersId], references: [id])
+  membersId String?
+}
+
+model Requerst_Quote {
+  id           String @id @default(uuid())
+  full_name    String
+  email        String
+  phone_number String
+  company_name String
+  request      String
+}
+
+model question {
+  id         String @id @default(uuid())
+  first_name String
+  last_name  String
+  message    String
+}
+
+model Requerst_Quote_buss {
+  id              String @id @default(uuid())
+  first_name      String
+  last_name       String
+  company_name    String
+  company_website String
+  email           String
+  jobtitle        String
+  phone_number    String
+  company_size    String
+  job             String
+  target_audience String
+  job_description String
+}
+
+model FAQ {
+  id      String @id @default(uuid())
+  qustion String
+  ans     String
+}
+
+model cereer {
+  id         String @id @default(uuid())
+  tag        String
+  name       String
+  mode       String
+  apply_like String
+}
+
+model client {
+  id    String @id @default(uuid())
+  name  String
+  image String
+}
+
+model services {
+  id   String @id @default(uuid())
+  name String
+  Link String
+}

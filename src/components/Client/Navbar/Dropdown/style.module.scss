@@ -1,0 +1,72 @@
+.dropDown {
+    position: relative;
+    display: flex !important;
+    align-items: center !important;
+    width: max-content;
+    gap: 3px;
+
+
+    span {
+        transition: all 2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // p {
+    //     &:hover~div {
+    //         opacity: 1;
+    //         display: inherit;
+    //     }
+    // }
+
+    div {
+        transition: all 2s ease;
+        opacity: 0;
+        display: none;
+        position: absolute;
+        z-index: 99999;
+        top: 70px;
+        width: max-content;
+        padding: 0px 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+        ;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        margin-top: 1px;
+        left: 0;
+
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+
+            li {
+                font-size: .8rem;
+                line-height: 1.25rem;
+                padding: 10px 20px;
+                list-style: none;
+                text-decoration: none;
+                letter-spacing: 1px;
+                // padding: 20px 0px;
+                border-radius: 5px;
+                transition: all 0.3s ease;
+                color: #313131;
+                font-family: Sora, sans-serif;
+                font-size: 16px;
+                font-style: normal;
+                cursor: pointer;
+                font-weight: 400;
+                line-height: 20px;
+                display: inline-block;
+
+                &:hover {
+                    background-color: rgb(243 244 246/1);
+                }
+            }
+        }
+    }
+}
